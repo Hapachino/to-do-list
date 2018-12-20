@@ -1,32 +1,13 @@
-import React, { Component } from 'react';
-import dummyList from '../data/to_do_list';
+import React from 'react';
 
-class List extends Component {
-  state = {
-    list: [],
-  }
+export default props => {
+  const listElements = props.todos.map(value => 
+     <li className="collection-item" key={value._id}>{value.title}</li>
+  );
 
-  componentDidMount() {
-    this.getListData();
-  }
-
-  getListData = () => {
-    this.setState({
-      list: dummyList,
-    });
-  }
-
-  render() {
-    const listElements = this.state.list.map(value => {
-      return <li className="collection-item" key={value._id}>{value.title}</li>
-    });
-
-    return (
-      <ul className="collection">
-        {listElements}
-      </ul>
-    );
-  }
+  return (
+    <ul className="collection">
+      {listElements}
+    </ul>
+  );
 }
-
-export default List;
