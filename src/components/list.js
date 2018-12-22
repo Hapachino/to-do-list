@@ -1,9 +1,16 @@
 import React from 'react';
+import ListItem from './list_item';
 
 export default props => {
-  const listElements = props.todos.map(value => 
-     <li className="collection-item" key={value._id}>{value.title}</li>
-  );
+  const listElements = props.todos.map(value => {
+    return <ListItem 
+              delete={() => props.delete(value._id)} 
+              toggle={() => props.toggle(value._id)}
+              complete={value.complete}
+              key={value._id} 
+              title={value.title} 
+            />
+  });
 
   return (
     <ul className="collection">
