@@ -5,6 +5,7 @@ import NavButton from './nav_button';
 export default props => {
   const listElements = props.todos.map(value => {
     return <ListItem 
+              itemId={value._id}
               delete={() => props.delete(value._id)} 
               toggle={() => props.toggle(value._id)}
               complete={value.complete}
